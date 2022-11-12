@@ -3,14 +3,22 @@ import { screen } from '../../utils/screeSize'
 export const DetectedTweetListWrap = styled.div`
     max-width: 100%;
     padding: 52px 64px;
+    @media ${screen.tablet} {
+        padding: 32px;
+    }
+    @media ${screen.mobileS} {
+        padding: 20px;
+    }
 ` 
 export const Alpha = styled.div`
     margin-bottom: 52px;
 ` 
-
 export const Beta = styled.div`
    display: flex;
    justify-content: space-between;
+   @media ${screen.tablet} {
+        flex-wrap: wrap;
+    }
 ` 
 export const CardWrapRedContainer = styled.div`
     display: flex;
@@ -19,6 +27,9 @@ export const CardWrapRedContainer = styled.div`
     justify-content: space-between;
     background: #FFFAFA;
     border-radius: 16px;
+    @media ${screen.tablet} {
+        width: 100%;
+    }
 ` 
 export const CardWrapGreenContainer = styled.div`
     display: flex;
@@ -27,16 +38,25 @@ export const CardWrapGreenContainer = styled.div`
     justify-content: space-between;
     background: #FAFFFA;
     border-radius: 16px;
+    @media ${screen.tablet} {
+        width: 100%;
+    }
 ` 
 export const CardWrapGreen = styled.div`
     display: flex;
     width: 48.5%;
     border-radius: 16px;
     flex-wrap: wrap;
+    @media ${screen.mobileS} {
+        width: 100%;
+    }
 ` 
 export const CardWrapRed = styled.div`
     display: flex;
     width: 48.5%;
+    @media ${screen.mobileS} {
+        width: 100%;
+    }
 ` 
 export const Delta = styled.div`
     display: flex;
@@ -57,25 +77,29 @@ export const Heading = styled.div`
     font-size: 16px;
     line-height: 28px;
 `
-
-export const Gamma = styled.div`
+export const Checking = styled.div`
     display: flex;
-    /* align-items: center; */
-    background-color: yellow;
-    /* justify-content: space-between; */
     width: 100%;
+    /* background-color: blue; */
+    /* border: 1px solid black; */
     @media ${screen.tablet} {
         flex-wrap: wrap;
     }
 ` 
-
 export const GraphWrap = styled.div`
     width: 72.5%;
     margin-right: 10px;
-    align-self: flex-start;
+    /* align-self: flex-start; */
     svg {
         width: 100%;
         height: 100%
+    }
+    @media ${screen.tablet} {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    @media ${screen.mobileS} {
+        width: 100%;
     }
 ` 
 export const ListWrap = styled.div`
@@ -85,7 +109,7 @@ export const ListWrap = styled.div`
     border: 1px solid #E4E7EC;
     box-shadow: 0px 1px 3px rgba(16, 24, 40, 0.1), 0px 1px 2px rgba(16, 24, 40, 0.06);
     border-radius: 8px;
-    height: 357px;
+    height: 353px;
     p {
         font-family: 'Inter';
         font-style: normal;
@@ -97,7 +121,13 @@ export const ListWrap = styled.div`
         display: flex;
         align-items: center;
     }
-    
+    @media ${screen.tablet} {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    @media ${screen.mobileS} {
+        width: 100%;
+    }
 `
 
 export const TitleWrap = styled.h6`
@@ -142,6 +172,12 @@ export const CountWrap = styled.div`
     padding: 8px ;
     margin-top: 24px;
     display: flex;
+    @media ${screen.tablet} {
+        width: 98%;
+    }
+    @media ${screen.mobileS} {
+        width: 98%;
+    }
 `
 export const HateSpeech = styled.p`
     font-family: 'Inter';

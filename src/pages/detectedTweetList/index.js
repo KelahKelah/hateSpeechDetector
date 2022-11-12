@@ -20,12 +20,13 @@ import {
   HateSpeech,
   NonHateSpeech,
   CountWrap,
-  ListText
+  ListText,
+  Checking
 } from './style.js'
 import {  
   BackArrow,
  } from '../../assets/svgs'
-import { Gamma } from "../../components/card/style";
+
 import {  
   TwitterIcon, Logo, GraphImg } from '../../assets/svgs'
 
@@ -56,7 +57,7 @@ const DetectedTweetList = () => {
             <BackArrow onClick={()=>handleGoback()} />
         </Alpha>
 
-        <Gamma>
+        <Checking>
           <GraphWrap>
             <GraphImg />
           </GraphWrap>
@@ -79,7 +80,7 @@ const DetectedTweetList = () => {
             </ListText>
           </ListWrap>
 
-        </Gamma>
+        </Checking>
 
         
       <Delta>
@@ -128,10 +129,6 @@ const DetectedTweetList = () => {
           
           </CardWrapRedContainer>
         </Beta>
-
-      {/* <Gamma> */}
-      {/* </Gamma> */}
-
 
       </DetectedTweetListWrap>
   );
