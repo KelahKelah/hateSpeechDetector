@@ -92,8 +92,10 @@ export const ListWrap = styled.div`
         font-weight: 400;
         font-size: 14px;
         color: #667085;
-        margin: 0;
+        margin: 0px;
         padding-bottom: 12px;
+        display: flex;
+        align-items: center;
     }
     
 `
@@ -121,7 +123,15 @@ export const Text = styled.p`
     color: #667085;
     margin: 0;
 ` 
-
+export const ListText = styled.div`
+    div {
+        width: 8px;
+        height: 8px;
+        background: #009EDB;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+` 
 export const CountWrap = styled.div`
     background: #FAFAFA;
     border: 1px solid #E4E7EC;
