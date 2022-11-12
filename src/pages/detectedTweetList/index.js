@@ -19,11 +19,12 @@ import {
   CardWrapRedContainer,
   HateSpeech,
   NonHateSpeech,
-  CountWrap
+  CountWrap,
+  ListText
 } from './style.js'
 import {  
   BackArrow,
-  ForwardArrow } from '../../assets/svgs'
+ } from '../../assets/svgs'
 import { Gamma } from "../../components/card/style";
 import {  
   TwitterIcon, Logo, GraphImg } from '../../assets/svgs'
@@ -36,27 +37,6 @@ const DetectedTweetList = () => {
     navigate("/")
   }
 
-  const data = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-
-  ];
   const greenData = [
     { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
     { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
@@ -86,14 +66,17 @@ const DetectedTweetList = () => {
               <Title>Top hits phrases</Title>
               <Text>See alll</Text>
             </TitleWrap>
-              <p><span></span>“Eze is a slave and will alway be”</p>
-              <p><span></span>“You are just a black slave”</p>
-              <p><span></span>“Death to your generation”</p>
-              <p><span></span>“Your life is a joke and still no one laughs”</p>
-              <p><span></span>“Death to your generation”</p>
-              <p><span></span>“Your life is a joke and still no one laughs”</p>
-              <p><span></span>“Your life is a joke and still no one laughs”</p>
-              <p><span></span>“Your life is a joke and still no one laughs”</p>
+
+            <ListText>
+              <p><div></div>“Eze is a slave and will alway be”</p>
+              <p><div></div>“You are just a black slave”</p>
+              <p><div></div>“Death to your generation”</p>
+              <p><div></div>“Your life is a joke and still no one laughs”</p>
+              <p><div></div>“Death to your generation”</p>
+              <p><div></div>“Your life is a joke and still no one laughs”</p>
+              <p><div></div>“Your life is a joke and still no one laughs”</p>
+              <p><div></div>“Your life is a joke and still no one laughs”</p>
+            </ListText>
           </ListWrap>
 
         </Gamma>
