@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { Button } from "../../../../components";
+import { screen } from "../../utils/screeSize";
 
 export const CardWrap = styled.div`
     background: #FEFEFE;
@@ -11,7 +11,6 @@ export const CardWrap = styled.div`
     padding: 16px 20px;
     margin-top: 20px;
     height: 200px;
-    /* width: 20.5%; */
 `;
 export const Alpha = styled.div`
   display: flex;
@@ -26,6 +25,15 @@ export const Beta = styled.div`
     line-height: 24px;
     color: #2A303D;
     padding-top: 12px;
+
+    @media ${screen.tablet} {
+        flex-wrap: wrap;
+        font-size: 12px;
+    }
+    @media ${screen.mobileS} {
+        flex-wrap: wrap;
+        font-size: 12px;
+    }
   }
 `;
 export const Gamma = styled.div`

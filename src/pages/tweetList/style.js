@@ -13,6 +13,14 @@ export const Alpha = styled.div`
     justify-content: space-between;
     padding: 20px 0;
     width: 100%;
+    @media ${screen.mobileS} {
+        flex-wrap: wrap;
+    }
+    .primaryButton {
+        @media ${screen.mobileS} {
+        width: 100%;
+    }
+    }
 `;
 export const Heading = styled.h6`
     font-family: 'Roboto';
@@ -31,11 +39,13 @@ export const Text = styled.p`
     font-size: 16px;
     color: #727998;
     margin: 4px 0 0 0;
+    @media ${screen.mobileS} {
+        flex-wrap: wrap;
+        font-size: 12px;
+    }
 `;
 export const CardContainer = styled.div`
      display: flex;
-    /* flex-wrap: wrap; */
-    /* background-color: red; */
     width: 100%;
     justify-content: space-between;
     @media ${screen.tablet} {
@@ -44,16 +54,28 @@ export const CardContainer = styled.div`
 `
 export const CardWrap = styled.div`
     width: 24%;
+    @media ${screen.tablet} {
+        width: 48%;
+    }
+    @media ${screen.mobileM} {
+        width: 100%;
+    }
 `;
 export const Title = styled.div`
-
+    @media ${screen.mobileS} {
+            width: 100%;
+        }
 `;
+
 export const PaginateWrap = styled.div`
     padding: 40px 0;
     align-self: flex-end;
     display: flex;
     align-items: center;
     justify-content: center;
+    @media ${screen.mobileM} {
+            width: 100%;
+        }
     p {
         font-family: 'Open Sans';
         font-style: normal;
