@@ -1,0 +1,1 @@
+export const BaseUrl = "https://hate-speech-detector-app.herokuapp.com"
