@@ -18,14 +18,14 @@ import {
   ForwardArrow, TwitterIcon, Logo } from '../../assets/svgs'
 
 const TweetList = () => {
-  const [data, setData ] = useState([])
+  // const [data, setData ] = useState([]) 
 
-  // const data = [
-  //   { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  //   { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  //   { avater: <Logo /> , fullName: "Gift Chukwu", username: "@gift" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  //   { avater: <Logo /> , fullName: "John Micheal", username: "@johnMic" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  // ]
+  const data = [
+    { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "It’s your time, it’s your money. Other platforms will charge you as much as 20% commission on the sales that you make. We don’t.", icon: <TwitterIcon /> },
+    { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Returns true or false if every element in the specified array satisfies a condition specified in the callback function. Returns false even if ", icon: <TwitterIcon /> },
+    { avater: <Logo /> , fullName: "Gift Chukwu", username: "@gift" , tweet: "earning web technologies step by step. Examples might be simplified to improve reading and basic understanding. While using this site", icon: <TwitterIcon /> },
+    { avater: <Logo /> , fullName: "John Micheal", username: "@johnMic" , tweet: "email list and get latest updates, tips & tricks on C#, .Net, JavaScript, jQuery, AngularJS, Node.js to your inbox", icon: <TwitterIcon /> },
+  ]
 
   axios.defaults.headers.common["content-type"] = "application/json";
   axios.defaults.headers.common["unsafe-url"] = "*";
@@ -47,22 +47,12 @@ const TweetList = () => {
     }).catch((err)=> {
       console.log(err, 'err')
     })
-    // const {data} = await axios.get("https://hate-speech-detector-app.herokuapp.com/?page=1")
-    // for (const key in data) {
-    //   if (Object.hasOwnProperty.call(data, key)) {
-    //     const element = data[key];
-    //     console.log(element);
-    //   }
-    // }
   }
   
   const handleNavigate = () => {
     console.log('enter')
     navigate("/detected")
   }
-  // useEffect(() => {
-    
-  // }, []) 
 
   useEffect(() => {
     getTweets()
@@ -75,11 +65,11 @@ const TweetList = () => {
           <Heading>Tweets</Heading>
           <Text>A poll of tweet are displayed below</Text>
         </Title>
-        <Button name="Analyze Tweets" onClick={()=>handleNavigate()} />
+        <Button className="primaryButton" name="Analyze Tweets" onClick={()=>handleNavigate()} />
       </Alpha>
 
       <CardContainer>
-        {/* {data.map((ele, ind)=> { 
+        {data.map((ele, ind)=> { 
           return(
             <CardWrap key={ind}>
             <Card 
@@ -91,7 +81,23 @@ const TweetList = () => {
             />
           </CardWrap>
           )
-        })}  */}
+        })} 
+      </CardContainer>
+
+      <CardContainer>
+        {data.map((ele, ind)=> { 
+          return(
+            <CardWrap key={ind}>
+            <Card 
+              tweet={ele.tweet}
+              username={ele.username}
+              fullName={ele.fullName}
+              icon={ele.icon}
+              avater={ele.avater}
+            />
+          </CardWrap>
+          )
+        })} 
       </CardContainer>
 
 
