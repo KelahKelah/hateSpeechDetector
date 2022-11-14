@@ -17,11 +17,12 @@ import {
 } from './style.js'
 import {  
   PlainBackArrow,
-  ForwardArrow, TwitterIcon, Logo } from '../../assets/svgs'
+  ForwardArrow,  } from '../../assets/svgs'
 
 const TweetList = () => {
   const [allData, setAllData ] = useState([]) 
-  
+  const [count, setCount ] = useState({hate: 0, nonHate: 0})
+  let [pageNo, setPageNo] = useState(1)
   axios.defaults.headers.common["content-type"] = "application/json";
   axios.defaults.headers.common["unsafe-url"] = "*";
   // axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
@@ -55,13 +56,12 @@ const TweetList = () => {
 
 
   useEffect(() => {
-    const getTweets = () => {  axios.get("https://hate-speech-detector-app.herokuapp.com/?page=1")
+    const getTweets = () => {  axios.get(`https://hate-speech-detector-app.herokuapp.com/?page=${pageNo}`)
     .then((res)=> {
       const raw = res.data.replace(/NaN/g, '"NaN"');
       const result = JSON.parse(raw)
       if(result) {
         setAllData((prev) => [...prev, ...result] )
-        console.log("allData", allData)
         // return result
       }
     }).catch((err)=> {
@@ -71,7 +71,9 @@ const TweetList = () => {
     })
   }
     getTweets()
-  }, [])
+    console.log(pageNo)
+
+  }, [pageNo])
 
   return (
     <TweetListWrap>
@@ -101,7 +103,7 @@ const TweetList = () => {
       </CardContainer>
 
       <PaginateWrap>
-        <PlainBackArrow /> <p className="active">1</p> <p>2</p>... <p>99</p> <p>100</p>  <ForwardArrow /> 
+        <PlainBackArrow onClick={()=>setPageNo(pageNo--)} /> <p  className="active">{pageNo}</p><ForwardArrow onClick={()=>setPageNo(pageNo++)} /> 
       </PaginateWrap>  
     </TweetListWrap>
   );

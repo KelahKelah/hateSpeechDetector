@@ -18,7 +18,7 @@ const DetectedCard = ({fullName, username, tweet, date, avater, twitterLogo}) =>
         </Alpha>
 
         <Beta>
-            <p>{tweet}</p>
+            <p>{tweet.length < 60 ? "say continue disaster nigeria continue peter obi didnt steal money clear debts didnt " : tweet }</p>
         </Beta>
 
         <Gamma>

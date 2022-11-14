@@ -71,7 +71,6 @@ const DetectedTweetList = () => {
       })
       console.log('hate', hateSpeech, 'none', nonHateSpeech)
       setfiltered((prev) => ({...prev, hate: hateSpeech, nonHate: nonHateSpeech}) )
-      console.log('====================>', filtered?.hate)
       
     }).catch((err)=> {
       console.log(err, 'err')
@@ -121,8 +120,8 @@ const DetectedTweetList = () => {
         </div>
 
         <CountWrap>
-          <HateSpeech><div></div>Hate speech-3234k</HateSpeech>
-          <NonHateSpeech><div></div>Non-hate speech-3234k</NonHateSpeech>
+          <HateSpeech><div></div>{`Hate speech-${filtered.hate.length}`}</HateSpeech>
+          <NonHateSpeech><div></div>{`Non-hate speech-${filtered.nonHate.length}`}</NonHateSpeech>
         </CountWrap>
       </Delta>
 
