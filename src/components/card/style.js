@@ -51,6 +51,11 @@ export const Date = styled.div`
 `;
 export const UserDetail= styled.div`
     display: flex;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
 `;
 export const NameWrap = styled.div`
     margin: 0 16px;

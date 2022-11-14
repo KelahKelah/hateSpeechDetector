@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import axios from 'axios'
+import { useQuery  } from "react-query";
 import {greenData, redData} from '../../utils/data'
 import { Card, Button, DetectedCard } from "../../components";
 import { useNavigate } from "react-router-dom";
@@ -34,41 +35,25 @@ import {
 const DetectedTweetList = () => {
   const navigate = useNavigate()
 
-  const getDetectedTweets = () => {
-    axios.get("https://hate-speech-detector-app.herokuapp.com/analysis")
+  const { data } = useQuery(['detectedTweets'], ()=> {
+    return  axios.get("https://hate-speech-detector-app.herokuapp.com/analysis")
     .then((res)=> {
-      // let jsontemp = res?.data.replace((/([\w]+)(:)/g), "\"$1\"$2");
-      // let correctjson = jsontemp.replace((/'/g), "\"");
-      // console.log("res", correctjson)
+      console.log('response', res)
+      const raw = res.data.replace(/NaN/g, '"NaN"')
+      const result = JSON.parse(raw)
+      console.log('raw', result[0])
     }).catch((err)=> {
       console.log(err, 'err')
     })
-  }
+     
+  })
 
-  useEffect(() => {
-    getDetectedTweets()
-
-    // console.log("data", data)
-  }, [])
 
   const handleGoback = () => {
     console.log('enter')
     navigate("/")
   }
 
-  // const greenData = [
-  //   { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  //   { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  //   { avater: <Logo /> , fullName: "Gift Chukwu", username: "@gift" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  //   { avater: <Logo /> , fullName: "John Micheal", username: "@johnMic" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  // ]
-
-  // const data = [
-  //   { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  //   { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  //   { avater: <Logo /> , fullName: "Gift Chukwu", username: "@gift" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  //   { avater: <Logo /> , fullName: "John Micheal", username: "@johnMic" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  // ]
   return (
         <DetectedTweetListWrap>
         <Alpha>

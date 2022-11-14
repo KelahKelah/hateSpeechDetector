@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
-import { data } from '../../utils/data'
+// import { data } from '../../utils/data'
+import { useQuery } from "react-query";
 import { BaseUrl } from '../../utils/baseUrl'
 import { useNavigate } from "react-router-dom";
 import { Card, Button } from "../../components";
@@ -20,37 +21,40 @@ import {
 
 const TweetList = () => {
   // const [data, setData ] = useState([]) 
-
- 
-
+  
   axios.defaults.headers.common["content-type"] = "application/json";
   axios.defaults.headers.common["unsafe-url"] = "*";
   // axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
   const navigate = useNavigate()
-  const getTweets = () => {
-
-    axios.get("https://hate-speech-detector-app.herokuapp.com/?page=1")
+  const [pageNo, setPageNo] = useState(1)
+  
+  const { data } = useQuery(['allTweet'], () => {
+    return axios.get(`https://hate-speech-detector-app.herokuapp.com/?page=${pageNo}`)
     .then((res)=> {
-      let jsontemp = res?.data.replace((/([\w]+)(:)/g), "\"$1\"$2");
-      let correctjson = jsontemp.replace((/'/g), "\"");
-      console.log("res", correctjson)
-      // const result = res?.data.replace(/NaN/g, 'NaN')
-      // console.log('result', JSON.parse(result))
-      // setData((prev)=> [...prev, ...res.data ]  ) 
+      const raw = res.data.replace(/NaN/g, '"NaN"');
+      const result = JSON.parse(raw)
+      // setData((prev)=> [...prev, ...result ]  ) 
+      if(result) {
+        console.log('result', result)
+        return result
+      }
     }).catch((err)=> {
-      console.log(err, 'err')
+      if(err) {
+        console.log(err, 'err')
+      }
     })
   }
   
+  )
+  console.log("data", data)
+
+
   const handleNavigate = () => {
     console.log('enter')
     navigate("/detected")
   }
 
-  useEffect(() => {
-    getTweets()
-  }, [])
 
   return (
     <TweetListWrap>
@@ -67,38 +71,20 @@ const TweetList = () => {
           return(
             <CardWrap key={ind}>
             <Card 
-              tweet={ele.tweet}
-              username={ele.username}
-              fullName={ele.username}
+              tweet={ele?.tweet}
+              username={ele?.tweet_author_username}
+              fullName={ele?.tweet_author_username}
               twitterLogo={ele.twitterLogo}
-              avater={ele.avater}
-              date={ele.date}
+              avater={ele?.tweet_author_image}
+              date={ `${ele.created_at}`.replace("GMT", "") }
             />
           </CardWrap>
           )
         })} 
       </CardContainer>
-{/* 
-      <CardContainer>
-        {data.map((ele, ind)=> { 
-          return(
-            <CardWrap key={ind}>
-            <Card 
-              tweet={ele.tweet}
-              username={ele.username}
-              fullName={ele.fullName}
-              icon={ele.icon}
-              avater={ele.avater}
-            />
-          </CardWrap>
-          )
-        })} 
-      </CardContainer> */}
-
-
 
       <PaginateWrap>
-        <PlainBackArrow /> <p className="active">1</p> <p>2</p>... <p>99</p> <p>100</p>  <ForwardArrow /> 
+        <PlainBackArrow /> <p className="active">1</p> <p onClick={()=> setPageNo(pageNo++)}>2</p>... <p>99</p> <p>100</p>  <ForwardArrow /> 
       </PaginateWrap>  
     </TweetListWrap>
   );

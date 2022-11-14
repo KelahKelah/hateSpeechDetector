@@ -1,18 +1,16 @@
 import './App.css';
+import { QueryClient, QueryClientProvider } from "react-query";
 import Approute from './approute';
-import axios from 'axios'
 
 function App() {
-
-  // axios.defaults.headers = {
-  //   "Accept": "application/json",
-  //   "Content-Type": "application/json",
-  //   "Access-Control-Allow-Origin": "*",
-  // }
+  const queryClient = new QueryClient();
 
   return (
     <div>
-      <Approute />
+      <QueryClientProvider client={queryClient}>
+        <Approute />
+      </QueryClientProvider>
+
     </div>
   );
 }
