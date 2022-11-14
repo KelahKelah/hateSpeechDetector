@@ -18,7 +18,7 @@ const Card = ({fullName, username, tweet, date, avater, twitterLogo}) => {
         </Alpha>
 
         <Beta>
-            <p>{tweet === "" ? "peter obi didnt steal money clear debts didnt bequeath poverty children clear parent pension" : tweet }</p>
+            <p>{tweet.length < 60 ? "peter obi didnt steal money clear debts didnt bequeath poverty children clear parent pension" : tweet }</p>
         </Beta>
 
         <Gamma>
