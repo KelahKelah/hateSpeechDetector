@@ -168,6 +168,7 @@ export const CountWrap = styled.div`
     box-shadow: 0px 1px 3px rgba(16, 24, 40, 0.1), 0px 1px 2px rgba(16, 24, 40, 0.06);
     border-radius: 8px;
     align-self: flex-end;
+    justify-content: space-between;
     width: 30%;
     padding: 8px ;
     margin-top: 24px;

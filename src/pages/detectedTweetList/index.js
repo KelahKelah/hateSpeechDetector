@@ -121,7 +121,7 @@ const DetectedTweetList = () => {
                     <Card 
                       tweet={ele.tweet}
                       username={ele.username}
-                      fullName={ele.fullName}
+                      fullName={ele.username}
                       icon={ele.icon}
                       avater={ele.avater}
                       date={ele.date}
@@ -139,7 +139,7 @@ const DetectedTweetList = () => {
                   <DetectedCard 
                     tweet={ele.tweet}
                     username={ele.username}
-                    fullName={ele.fullName}
+                    fullName={ele.username}
                     twitterLogo={ele.twitterLogo}
                     avater={ele.avater}
                     date={ele.date}
