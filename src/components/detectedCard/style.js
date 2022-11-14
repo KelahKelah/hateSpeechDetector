@@ -26,6 +26,7 @@ export const Beta = styled.div`
     line-height: 24px;
     color: #FF0000;
     padding-top: 12px;
+
     @media ${screen.tablet} {
         flex-wrap: wrap;
         font-size: 12px;
@@ -50,6 +51,11 @@ export const Date = styled.div`
 `;
 export const UserDetail= styled.div`
     display: flex;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
 `;
 export const NameWrap = styled.div`
     margin: 0 16px;

@@ -8,7 +8,6 @@ const Card = ({fullName, username, tweet, date, avater, twitterLogo}) => {
     <CardWrap>
         <Alpha>
             <UserDetail>
-                {/* <>{avater}</> */}
                 <img src={avater} alt="avater" />
                 <NameWrap>
                     <Name>{fullName}</Name>
@@ -19,7 +18,7 @@ const Card = ({fullName, username, tweet, date, avater, twitterLogo}) => {
         </Alpha>
 
         <Beta>
-            <p>{tweet}</p>
+            <p>{tweet === "" ? "peter obi didnt steal money clear debts didnt bequeath poverty children clear parent pension" : tweet }</p>
         </Beta>
 
         <Gamma>

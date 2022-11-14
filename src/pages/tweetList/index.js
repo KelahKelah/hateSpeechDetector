@@ -20,34 +20,32 @@ import {
   ForwardArrow, TwitterIcon, Logo } from '../../assets/svgs'
 
 const TweetList = () => {
-  // const [data, setData ] = useState([]) 
+  const [allData, setAllData ] = useState([]) 
   
   axios.defaults.headers.common["content-type"] = "application/json";
   axios.defaults.headers.common["unsafe-url"] = "*";
   // axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
   const navigate = useNavigate()
-  const [pageNo, setPageNo] = useState(1)
+  // const { data } = useQuery(['allTweet'], 
   
-  const { data } = useQuery(['allTweet'], () => {
-    return axios.get(`https://hate-speech-detector-app.herokuapp.com/?page=${pageNo}`)
-    .then((res)=> {
-      const raw = res.data.replace(/NaN/g, '"NaN"');
-      const result = JSON.parse(raw)
-      // setData((prev)=> [...prev, ...result ]  ) 
-      if(result) {
-        console.log('result', result)
-        return result
-      }
-    }).catch((err)=> {
-      if(err) {
-        console.log(err, 'err')
-      }
-    })
-  }
-  
-  )
-  console.log("data", data)
+  // () => {
+  //   return axios.get("https://hate-speech-detector-app.herokuapp.com/?page=1")
+  //   .then((res)=> {
+  //     const raw = res.data.replace(/NaN/g, '"NaN"');
+  //     const result = JSON.parse(raw)
+  //     if(result) {
+  //       console.log('result', result)
+  //       return result
+  //     }
+  //   }).catch((err)=> {
+  //     if(err) {
+  //       console.log(err, 'err')
+  //     }
+  //   })
+  // })
+
+  // console.log("data", data)
 
 
   const handleNavigate = () => {
@@ -55,6 +53,25 @@ const TweetList = () => {
     navigate("/detected")
   }
 
+
+  useEffect(() => {
+    const getTweets = () => {  axios.get("https://hate-speech-detector-app.herokuapp.com/?page=1")
+    .then((res)=> {
+      const raw = res.data.replace(/NaN/g, '"NaN"');
+      const result = JSON.parse(raw)
+      if(result) {
+        setAllData((prev) => [...prev, ...result] )
+        console.log("allData", allData)
+        // return result
+      }
+    }).catch((err)=> {
+      if(err) {
+        console.log(err, 'err')
+      }
+    })
+  }
+    getTweets()
+  }, [])
 
   return (
     <TweetListWrap>
@@ -67,7 +84,7 @@ const TweetList = () => {
       </Alpha>
 
       <CardContainer>
-        {data.map((ele, ind)=> { 
+        {allData.map((ele, ind)=> { 
           return(
             <CardWrap key={ind}>
             <Card 
@@ -84,7 +101,7 @@ const TweetList = () => {
       </CardContainer>
 
       <PaginateWrap>
-        <PlainBackArrow /> <p className="active">1</p> <p onClick={()=> setPageNo(pageNo++)}>2</p>... <p>99</p> <p>100</p>  <ForwardArrow /> 
+        <PlainBackArrow /> <p className="active">1</p> <p>2</p>... <p>99</p> <p>100</p>  <ForwardArrow /> 
       </PaginateWrap>  
     </TweetListWrap>
   );
