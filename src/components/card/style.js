@@ -12,6 +12,7 @@ export const CardWrap = styled.div`
     padding: 16px 20px;
     margin-top: 20px;
     height: 200px;
+    /* width: ; */
 `;
 export const Alpha = styled.div`
   display: flex;
