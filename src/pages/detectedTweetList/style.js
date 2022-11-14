@@ -47,15 +47,15 @@ export const CardWrapGreen = styled.div`
     width: 48.5%;
     border-radius: 16px;
     flex-wrap: wrap;
-    @media ${screen.mobileS} {
-        width: 100%;
+    @media ${screen.mobileL} {
+        min-width: 100%;
     }
 ` 
 export const CardWrapRed = styled.div`
     display: flex;
     width: 48.5%;
-    @media ${screen.mobileS} {
-        width: 100%;
+    @media ${screen.mobileL} {
+        min-width: 100%;
     }
 ` 
 export const Delta = styled.div`
@@ -98,8 +98,8 @@ export const GraphWrap = styled.div`
         flex-wrap: wrap;
         width: 100%;
     }
-    @media ${screen.mobileS} {
-        width: 100%;
+    @media ${screen.mobileL} {
+        margin-right: 0px;
     }
 ` 
 export const ListWrap = styled.div`
@@ -125,11 +125,11 @@ export const ListWrap = styled.div`
         flex-wrap: wrap;
         width: 100%;
     }
-    @media ${screen.mobileS} {
+    @media ${screen.mobileL} {
         width: 100%;
+        margin-top: 40px;
     }
 `
-
 export const TitleWrap = styled.h6`
     display: flex;
     justify-content: space-between;
@@ -175,8 +175,8 @@ export const CountWrap = styled.div`
     @media ${screen.tablet} {
         width: 98%;
     }
-    @media ${screen.mobileS} {
-        width: 98%;
+    @media ${screen.mobileL} {
+        width: 95%;
     }
 `
 export const HateSpeech = styled.p`
