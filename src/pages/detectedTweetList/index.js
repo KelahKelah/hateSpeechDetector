@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from 'axios'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Card, Button } from "../../components";
+import {greenData, redData} from '../../utils/data'
+import { Card, Button, DetectedCard } from "../../components";
 import { useNavigate } from "react-router-dom";
 import {
     DetectedTweetListWrap,
@@ -47,6 +47,8 @@ const DetectedTweetList = () => {
 
   useEffect(() => {
     getDetectedTweets()
+
+    // console.log("data", data)
   }, [])
 
   const handleGoback = () => {
@@ -54,19 +56,19 @@ const DetectedTweetList = () => {
     navigate("/")
   }
 
-  const greenData = [
-    { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-    { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-    { avater: <Logo /> , fullName: "Gift Chukwu", username: "@gift" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-    { avater: <Logo /> , fullName: "John Micheal", username: "@johnMic" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  ]
+  // const greenData = [
+  //   { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
+  //   { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
+  //   { avater: <Logo /> , fullName: "Gift Chukwu", username: "@gift" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
+  //   { avater: <Logo /> , fullName: "John Micheal", username: "@johnMic" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
+  // ]
 
-  const redData = [
-    { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-    { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-    { avater: <Logo /> , fullName: "Gift Chukwu", username: "@gift" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-    { avater: <Logo /> , fullName: "John Micheal", username: "@johnMic" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
-  ]
+  // const data = [
+  //   { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
+  //   { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
+  //   { avater: <Logo /> , fullName: "Gift Chukwu", username: "@gift" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
+  //   { avater: <Logo /> , fullName: "John Micheal", username: "@johnMic" , tweet: "Lorem ipsum dolor sit amet consectetur. Eget elementum quis faucibus id. Imperdiet eget aliquam gravida diam risus eget augue congue placerat....", icon: <TwitterIcon /> },
+  // ]
   return (
         <DetectedTweetListWrap>
         <Alpha>
@@ -122,6 +124,8 @@ const DetectedTweetList = () => {
                       fullName={ele.fullName}
                       icon={ele.icon}
                       avater={ele.avater}
+                      date={ele.date}
+
                     />
                 </CardWrapGreen>
               )
@@ -132,12 +136,13 @@ const DetectedTweetList = () => {
             {redData.map((ele, ind)=> {
             return(
               <CardWrapRed key={ind}>
-                  <Card 
+                  <DetectedCard 
                     tweet={ele.tweet}
                     username={ele.username}
                     fullName={ele.fullName}
-                    icon={ele.icon}
+                    twitterLogo={ele.twitterLogo}
                     avater={ele.avater}
+                    date={ele.date}
                   />
               </CardWrapRed>
             )
