@@ -8,14 +8,12 @@ const Card = ({fullName, username, tweet, date, avater, twitterLogo}) => {
     <CardWrap>
         <Alpha>
             <UserDetail>
-                {/* <Av /> */}
                 <>{avater}</>
                 <NameWrap>
                     <Name>{fullName}</Name>
                     <Username>{username}</Username>
                 </NameWrap>
             </UserDetail>
-            {/* <TwitterIcon /> */}
             <>{twitterLogo}</>
         </Alpha>
 
