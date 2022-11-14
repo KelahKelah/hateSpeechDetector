@@ -29,8 +29,7 @@ import {
   BackArrow,
  } from '../../assets/svgs'
 
-import {  
-  TwitterIcon, Logo, GraphImg } from '../../assets/svgs'
+import {   Graph } from '../../assets/svgs'
 
 const DetectedTweetList = () => {
   const navigate = useNavigate()
@@ -90,7 +89,7 @@ const DetectedTweetList = () => {
 
         <Checking>
           <GraphWrap>
-            <GraphImg />
+            <Graph />
           </GraphWrap>
 
           <ListWrap>

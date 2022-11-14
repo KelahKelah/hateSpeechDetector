@@ -4,7 +4,7 @@ import { ReactComponent as TwitterIcon } from "./twitterIcon.svg"
 import { ReactComponent as Av } from "./av.svg"
 import { ReactComponent as PlainBackArrow } from "./plainBackArrow.svg"
 import { ReactComponent as ForwardArrow } from "./plainForwardArrow.svg"
-import { ReactComponent as GraphImg } from "./graphImg.svg"
+import { ReactComponent as Graph } from "./graph.svg"
 // import { ReactComponent as GraphImg } from "./graphImg.svg"
 
 
@@ -16,5 +16,5 @@ export {
     Av,
     PlainBackArrow,
     ForwardArrow,
-    GraphImg
+    Graph
 }
