@@ -5,6 +5,8 @@ import { ReactComponent as Av } from "./av.svg"
 import { ReactComponent as PlainBackArrow } from "./plainBackArrow.svg"
 import { ReactComponent as ForwardArrow } from "./plainForwardArrow.svg"
 import { ReactComponent as GraphImg } from "./graphImg.svg"
+// import { ReactComponent as GraphImg } from "./graphImg.svg"
+
 
 
 export {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+import { data } from '../../utils/data'
 import { BaseUrl } from '../../utils/baseUrl'
 import { useNavigate } from "react-router-dom";
 import { Card, Button } from "../../components";
@@ -20,12 +21,7 @@ import {
 const TweetList = () => {
   // const [data, setData ] = useState([]) 
 
-  const data = [
-    { avater: <Logo /> , fullName: "Groovy gray", username: "@groovy" , tweet: "It’s your time, it’s your money. Other platforms will charge you as much as 20% commission on the sales that you make. We don’t.", icon: <TwitterIcon /> },
-    { avater: <Logo /> , fullName: "Emeka Oko", username: "@emeka" , tweet: "Returns true or false if every element in the specified array satisfies a condition specified in the callback function. Returns false even if ", icon: <TwitterIcon /> },
-    { avater: <Logo /> , fullName: "Gift Chukwu", username: "@gift" , tweet: "earning web technologies step by step. Examples might be simplified to improve reading and basic understanding. While using this site", icon: <TwitterIcon /> },
-    { avater: <Logo /> , fullName: "John Micheal", username: "@johnMic" , tweet: "email list and get latest updates, tips & tricks on C#, .Net, JavaScript, jQuery, AngularJS, Node.js to your inbox", icon: <TwitterIcon /> },
-  ]
+ 
 
   axios.defaults.headers.common["content-type"] = "application/json";
   axios.defaults.headers.common["unsafe-url"] = "*";
@@ -33,16 +29,14 @@ const TweetList = () => {
 
   const navigate = useNavigate()
   const getTweets = () => {
+
     axios.get("https://hate-speech-detector-app.herokuapp.com/?page=1")
     .then((res)=> {
-      const result = res.data.json()
-
-      console.log('result', result)
-      if(result) {
-        result.map((ele, ind) => {
-          console.log('element',ele)
-        })
-      }
+      let jsontemp = res?.data.replace((/([\w]+)(:)/g), "\"$1\"$2");
+      let correctjson = jsontemp.replace((/'/g), "\"");
+      console.log("res", correctjson)
+      // const result = res?.data.replace(/NaN/g, 'NaN')
+      // console.log('result', JSON.parse(result))
       // setData((prev)=> [...prev, ...res.data ]  ) 
     }).catch((err)=> {
       console.log(err, 'err')
@@ -75,15 +69,15 @@ const TweetList = () => {
             <Card 
               tweet={ele.tweet}
               username={ele.username}
-              fullName={ele.fullName}
-              icon={ele.icon}
+              fullName={ele.username}
+              twitterLogo={ele.twitterLogo}
               avater={ele.avater}
             />
           </CardWrap>
           )
         })} 
       </CardContainer>
-
+{/* 
       <CardContainer>
         {data.map((ele, ind)=> { 
           return(
@@ -98,7 +92,7 @@ const TweetList = () => {
           </CardWrap>
           )
         })} 
-      </CardContainer>
+      </CardContainer> */}
 
 
 
