@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from 'axios'
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Card, Button } from "../../components";
 import { useNavigate } from "react-router-dom";
@@ -32,6 +33,21 @@ import {
 
 const DetectedTweetList = () => {
   const navigate = useNavigate()
+
+  const getDetectedTweets = () => {
+    axios.get("https://hate-speech-detector-app.herokuapp.com/analysis")
+    .then((res)=> {
+      // let jsontemp = res?.data.replace((/([\w]+)(:)/g), "\"$1\"$2");
+      // let correctjson = jsontemp.replace((/'/g), "\"");
+      // console.log("res", correctjson)
+    }).catch((err)=> {
+      console.log(err, 'err')
+    })
+  }
+
+  useEffect(() => {
+    getDetectedTweets()
+  }, [])
 
   const handleGoback = () => {
     console.log('enter')
