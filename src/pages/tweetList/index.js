@@ -72,6 +72,7 @@ const TweetList = () => {
               fullName={ele.username}
               twitterLogo={ele.twitterLogo}
               avater={ele.avater}
+              date={ele.date}
             />
           </CardWrap>
           )

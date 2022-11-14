@@ -5,22 +5,31 @@ export const TweetListWrap = styled.div`
     padding: 40px 64px;
     display: flex;
     flex-direction: column;
-    /* background-color: orange; */
-    /* width: 100%; */
+    
+    @media ${screen.mobileL} {
+        padding: 0px 20px;
+
+    }
     `;
 export const Alpha = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 20px 0;
     width: 100%;
-    @media ${screen.mobileS} {
+    @media ${screen.mobileL} {
         flex-wrap: wrap;
     }
     .primaryButton {
-        @media ${screen.mobileS} {
+        @media ${screen.mobileL} {
         width: 100%;
     }
     }
+`;
+export const Title = styled.div`
+    @media ${screen.mobileL} {
+            width: 100%;
+            padding-top: 20px;
+        }
 `;
 export const Heading = styled.h6`
     font-family: 'Roboto';
@@ -30,6 +39,9 @@ export const Heading = styled.h6`
     line-height: 33px;
     color: #06123C;
     margin: 0;
+    @media ${screen.mobileL} {
+        font-size: 24px;
+    }
 `;
 
 export const Text = styled.p`
@@ -39,9 +51,10 @@ export const Text = styled.p`
     font-size: 16px;
     color: #727998;
     margin: 4px 0 0 0;
-    @media ${screen.mobileS} {
-        flex-wrap: wrap;
-        font-size: 12px;
+    @media ${screen.mobileL} { 
+        font-weight: 400;
+        font-size: 16px;
+        margin-bottom: 24px;
     }
 `;
 export const CardContainer = styled.div`
@@ -59,15 +72,11 @@ export const CardWrap = styled.div`
     @media ${screen.tablet} {
         width: 48%;
     }
-    @media ${screen.mobileM} {
+    @media ${screen.mobileL} {
         width: 100%;
     }
 `;
-export const Title = styled.div`
-    @media ${screen.mobileS} {
-            width: 100%;
-        }
-`;
+
 
 export const PaginateWrap = styled.div`
     padding: 40px 0;

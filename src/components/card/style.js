@@ -8,6 +8,7 @@ export const CardWrap = styled.div`
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: 16px 20px;
     margin-top: 20px;
     height: 200px;
@@ -38,7 +39,8 @@ export const Beta = styled.div`
 `;
 export const Gamma = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+
 `;
 export const Date = styled.div`
     font-family: 'Open Sans';
