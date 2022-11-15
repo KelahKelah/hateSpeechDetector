@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { CardWrap, Alpha, Beta, Gamma, UserDetail, NameWrap, Name, Username, Date } from './style'
 import { TwitterIcon, Av  } from '../../assets/svgs'
 
-const Card = ({fullName, username, tweet, date, avater, twitterLogo}) => {
-  
+const Card = ({fullName, username, tweet, date, avater, detected, className}) => {
+
   return (
     <CardWrap>
         <Alpha>
@@ -18,7 +18,7 @@ const Card = ({fullName, username, tweet, date, avater, twitterLogo}) => {
         </Alpha>
 
         <Beta>
-            <p>{tweet.length < 60 ? "peter obi didnt steal money clear debts didnt bequeath poverty children clear parent pension" : tweet }</p>
+            <p className={detected ? "red" : "gray"}>{tweet.length < 60 ? "peter obi didnt steal money clear debts didnt bequeath poverty children clear parent pension" : tweet }</p>
         </Beta>
 
         <Gamma>

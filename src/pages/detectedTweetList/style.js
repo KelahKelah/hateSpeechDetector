@@ -20,44 +20,45 @@ export const Beta = styled.div`
         flex-wrap: wrap;
     }
 ` 
-export const CardWrapRedContainer = styled.div`
-    display: flex;
-    width: 49.2%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background: #FFFAFA;
-    border-radius: 16px;
-    @media ${screen.tablet} {
-        width: 100%;
-    }
-` 
-export const CardWrapGreenContainer = styled.div`
-    display: flex;
-    width: 49.2%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background: #FAFFFA;
-    border-radius: 16px;
-    @media ${screen.tablet} {
-        width: 100%;
-    }
-` 
-export const CardWrapGreen = styled.div`
-    display: flex;
-    width: 48.5%;
-    border-radius: 16px;
-    flex-wrap: wrap;
-    @media ${screen.mobileL} {
-        min-width: 100%;
-    }
-` 
-export const CardWrapRed = styled.div`
-    display: flex;
-    width: 48.5%;
-    @media ${screen.mobileL} {
-        min-width: 100%;
-    }
-` 
+// export const CardWrapRedContainer = styled.div`
+//     display: flex;
+//     width: 49.2%;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+//     background: #FFFAFA;
+//     border-radius: 16px;
+//     @media ${screen.tablet} {
+//         width: 100%;
+//     }
+// ` 
+// export const CardWrapGreenContainer = styled.div`
+//     display: flex;
+//     width: 49.2%;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+//     background: #FAFFFA;
+//     border-radius: 16px;
+//     @media ${screen.tablet} {
+//         width: 100%;
+//     }
+// ` 
+// export const CardWrapGreen = styled.div`
+//     display: flex;
+//     width: 48.5%;
+//     border-radius: 16px;
+//     flex-wrap: wrap;
+//     @media ${screen.mobileL} {
+//         min-width: 100%;
+//     }
+// ` 
+
+// export const CardWrapRed = styled.div`
+//     display: flex;
+//     width: 48.5%;
+//     @media ${screen.mobileL} {
+//         min-width: 100%;
+//     }
+// ` 
 export const Delta = styled.div`
     display: flex;
     flex-direction: column;
@@ -80,8 +81,6 @@ export const Heading = styled.div`
 export const Checking = styled.div`
     display: flex;
     width: 100%;
-    /* background-color: blue; */
-    /* border: 1px solid black; */
     @media ${screen.tablet} {
         flex-wrap: wrap;
     }
@@ -89,7 +88,6 @@ export const Checking = styled.div`
 export const GraphWrap = styled.div`
     width: 72.5%;
     margin-right: 10px;
-    /* align-self: flex-start; */
     svg {
         width: 100%;
         height: 100%
