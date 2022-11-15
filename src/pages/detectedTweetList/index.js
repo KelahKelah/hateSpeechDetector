@@ -29,7 +29,9 @@ import {
 const DetectedTweetList = () => {
   const navigate = useNavigate()
    const [filtered, setfiltered] = useState({hate: [], nonHate: [] })
-   const [pageNo, setPageNo] = useState(1)
+   let [pageNo, setPageNo] = useState(1)
+
+   console.log(pageNo)
 
   const handleGoback = () => {
     console.log('enter')
@@ -95,7 +97,10 @@ const DetectedTweetList = () => {
         </Beta>
 
       <PaginateWrap>
-        <PlainBackArrow onClick={()=>setPageNo(pageNo--)} /> <p  className="active">{pageNo}</p><ForwardArrow onClick={()=>setPageNo(pageNo++)} /> 
+        <PlainBackArrow onClick={()=>setPageNo(pageNo--)} /> 
+          <p  className="active" onCLick={ ()=>setPageNo(pageNo++) } >1</p> 
+          <p  onClick={ ()=>setPageNo(pageNo++)}>2</p> 
+        <ForwardArrow className={pageNo > 1 ? "active" : ""} onClick={()=>setPageNo(pageNo++)} /> 
       </PaginateWrap>  
     
       </DetectedTweetListWrap>

@@ -80,7 +80,11 @@ const TweetList = () => {
       </CardContainer>
 
       <PaginateWrap>
-        <PlainBackArrow onClick={()=>setPageNo(pageNo--)} /> <p  className="active">{pageNo}</p><ForwardArrow onClick={()=>setPageNo(pageNo++)} /> 
+        <PlainBackArrow onClick={()=>setPageNo(pageNo--)} /> 
+        <p  className="active">{pageNo} </p >
+        <p onClick={()=>setPageNo(pageNo++)} >2
+        </p>
+      <ForwardArrow onClick={()=>setPageNo(pageNo++)} /> 
       </PaginateWrap>  
 
     </TweetListWrap>
