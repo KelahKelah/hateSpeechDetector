@@ -13,7 +13,7 @@ import {
   CardContainer,
   Text,
   Alpha,
-  PaginateWrap
+  PaginateWrap,
 } from './style.js'
 import {  
   PlainBackArrow,
@@ -82,6 +82,7 @@ const TweetList = () => {
       <PaginateWrap>
         <PlainBackArrow onClick={()=>setPageNo(pageNo--)} /> <p  className="active">{pageNo}</p><ForwardArrow onClick={()=>setPageNo(pageNo++)} /> 
       </PaginateWrap>  
+
     </TweetListWrap>
   );
 };

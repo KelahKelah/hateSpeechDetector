@@ -193,6 +193,7 @@ export const HateSpeech = styled.p`
     height: 8px;
     background: #F55959;
     border-radius: 50%;
+    margin-right: 8px;
    }
 `
 export const NonHateSpeech = styled.p`
@@ -210,5 +211,6 @@ export const NonHateSpeech = styled.p`
     height: 8px;
     background: #86E086;
     border-radius: 50%;
+    margin-right: 8px;
    }
 `

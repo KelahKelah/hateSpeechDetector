@@ -15,18 +15,21 @@ import {
 } from './style.js'
 import { 
   CardContainer,
-  CardWrap
+  CardWrap,
+  PaginateWrap,
 } from '../tweetList/style'
 import {  
   BackArrow,
+  PlainBackArrow,
+  ForwardArrow
  } from '../../assets/svgs'
 
-import {   Graph } from '../../assets/svgs'
+// import {   Graph } from '../../assets/svgs'
 
 const DetectedTweetList = () => {
   const navigate = useNavigate()
    const [filtered, setfiltered] = useState({hate: [], nonHate: [] })
-  //  const [loading, setLoading] = useState(false)
+   const [pageNo, setPageNo] = useState(1)
 
   const handleGoback = () => {
     console.log('enter')
@@ -34,14 +37,13 @@ const DetectedTweetList = () => {
   }
 
   const {   isLoading, isError, error, data,  } = useQuery({
-    queryKey: ['allDetectedTweet', ],
-    queryFn: () => {  return axios.get("https://hate-speech-detector-app.herokuapp.com/analysis")
+    queryKey: ['allDetectedTweet'],
+    queryFn: () => {  return axios.get(`https://hate-speech-detector-app.herokuapp.com/analysis`)
     .then((res)=> {
       const raw = res.data.replace(/NaN/g, '"NaN"');
       const result = JSON.parse(raw)
       if(result !== undefined) {
-        console.log("barking")
-        return result[0]
+        return {res: result[0], count: result[1] }
       }
     }).catch((err)=> {
       if(err) {
@@ -51,7 +53,6 @@ const DetectedTweetList = () => {
   },
   keepPreviousData: true
   })
-
 
   return (
         <DetectedTweetListWrap>
@@ -68,14 +69,14 @@ const DetectedTweetList = () => {
         </div>
 
         <CountWrap>
-          <HateSpeech><div></div>{`Hate speech-${filtered.hate.length}`}</HateSpeech>
-          <NonHateSpeech><div></div>{`Non-hate speech-${filtered.nonHate.length}`}</NonHateSpeech>
+          <HateSpeech><div></div>{`Hate speech-${data?.count?.count?.hateSpeech}`}</HateSpeech>
+          <NonHateSpeech><div></div>{`Non-hate speech-${data?.count?.count?.notHateSpeech}`}</NonHateSpeech>
         </CountWrap>
       </Delta>
 
         <Beta>
           <CardContainer>
-          {data?.map((ele, ind)=> { 
+          {data?.res?.map((ele, ind)=> { 
             return(
               <CardWrap key={ind}>
               <Card 
@@ -91,9 +92,12 @@ const DetectedTweetList = () => {
             )
           })} 
         </CardContainer>
-
         </Beta>
 
+      <PaginateWrap>
+        <PlainBackArrow onClick={()=>setPageNo(pageNo--)} /> <p  className="active">{pageNo}</p><ForwardArrow onClick={()=>setPageNo(pageNo++)} /> 
+      </PaginateWrap>  
+    
       </DetectedTweetListWrap>
   );
 };
