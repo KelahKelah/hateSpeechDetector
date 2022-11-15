@@ -6,7 +6,7 @@ export const ButtonMain = styled.button`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 14px 20px;
+    padding: 10px 20px;
     background: #009EDB;
     border-radius: 8px;
     border-style: none;

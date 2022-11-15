@@ -19,13 +19,31 @@ export const Alpha = styled.div`
   justify-content: space-between;
 `;
 export const Beta = styled.div`
-  p {
+  .gray {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     color: #2A303D;
+    padding-top: 12px;
+
+    @media ${screen.tablet} {
+        flex-wrap: wrap;
+        font-size: 12px;
+    }
+    @media ${screen.mobileS} {
+        flex-wrap: wrap;
+        font-size: 12px;
+    }
+  }
+  .red {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FF0000;
     padding-top: 12px;
 
     @media ${screen.tablet} {
