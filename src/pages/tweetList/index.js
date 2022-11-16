@@ -25,6 +25,7 @@ const TweetList = () => {
   axios.defaults.headers.common["unsafe-url"] = "*";
   // axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
+  
   const navigate = useNavigate()
   
     const {   isLoading, isError, error, data,  } = useQuery({
@@ -80,11 +81,10 @@ const TweetList = () => {
       </CardContainer>
 
       <PaginateWrap>
-        <PlainBackArrow onClick={()=>setPageNo(pageNo--)} /> 
-        <p  className="active">{pageNo} </p >
-        <p onClick={()=>setPageNo(pageNo++)} >2
-        </p>
-      <ForwardArrow onClick={()=>setPageNo(pageNo++)} /> 
+        {pageNo < 1 ? <></> : <PlainBackArrow onClick={()=>setPageNo(pageNo--)} />  }
+        <p  className={pageNo === 1 ? "active" : ""} onClick={()=>setPageNo(1) }>{pageNo> 1 || pageNo < 1 ? "1" : `${pageNo}` }</p >
+        <p className={pageNo===2 ? "active" : ""} onClick={()=>setPageNo(2)} >2</p>
+      <ForwardArrow className={pageNo === 2 ? 'active' : ""} onClick={()=>setPageNo(pageNo++)} /> 
       </PaginateWrap>  
 
     </TweetListWrap>
