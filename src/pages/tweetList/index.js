@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 // import { data } from '../../utils/data'
 import { useQuery } from "react-query";
-import { BaseUrl } from '../../utils/baseUrl'
 import { useNavigate } from "react-router-dom";
 import { Card, Button, Loader } from "../../components";
 import {
@@ -84,6 +83,7 @@ const TweetList = () => {
         {pageNo < 1 ? <></> : <PlainBackArrow onClick={()=>setPageNo(pageNo--)} />  }
         <p  className={pageNo === 1 ? "active" : ""} onClick={()=>setPageNo(1) }>{pageNo> 1 || pageNo < 1 ? "1" : `${pageNo}` }</p >
         <p className={pageNo===2 ? "active" : ""} onClick={()=>setPageNo(2)} >2</p>
+        <p>...</p>
       <ForwardArrow className={pageNo === 2 ? 'active' : ""} onClick={()=>setPageNo(pageNo++)} /> 
       </PaginateWrap>  
 
