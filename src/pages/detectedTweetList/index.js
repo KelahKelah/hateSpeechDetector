@@ -40,7 +40,7 @@ const DetectedTweetList = () => {
 
   const {   isLoading, isError, error, data,  } = useQuery({
     queryKey: ['allDetectedTweet'],
-    queryFn: () => {  return axios.get(`https://hate-speech-detector-app.herokuapp.com/analysis`)
+    queryFn: () => {  return axios.get(`https://hate-speech-detector-app.herokuapp.com/analysis?page=${pageNo}`)
     .then((res)=> {
       const raw = res.data.replace(/NaN/g, '"NaN"');
       const result = JSON.parse(raw)
@@ -97,11 +97,11 @@ const DetectedTweetList = () => {
         </Beta>
 
       <PaginateWrap>
-        <PlainBackArrow onClick={()=>setPageNo(pageNo--)} /> 
-          <p  className="active" onCLick={ ()=>setPageNo(pageNo++) } >1</p> 
-          <p  onClick={ ()=>setPageNo(pageNo++)}>2</p> 
-        <ForwardArrow className={pageNo > 1 ? "active" : ""} onClick={()=>setPageNo(pageNo++)} /> 
-      </PaginateWrap>  
+        {pageNo < 1 ? <></> : <PlainBackArrow onClick={()=>setPageNo(pageNo--)} />  }
+        <p  className={pageNo === 1 ? "active" : ""} onClick={()=>setPageNo(1) }>{pageNo> 1 || pageNo < 1 ? "1" : `${pageNo}` }</p >
+        <p className={pageNo===2 ? "active" : ""} onClick={()=>setPageNo(2)} >2</p>
+      <ForwardArrow className={pageNo === 2 ? 'active' : ""} onClick={()=>setPageNo(pageNo++)} /> 
+      </PaginateWrap>    
     
       </DetectedTweetListWrap>
   );
