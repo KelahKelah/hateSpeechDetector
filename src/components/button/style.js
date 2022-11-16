@@ -16,6 +16,7 @@ export const ButtonMain = styled.button`
     font-size: 16px;
     letter-spacing: 0.02em;
     color: #FFFFFF;
+    cursor: pointer;
     @media ${screen.tablet} {
         font-size: 12px 15px ;
         padding: 10px;

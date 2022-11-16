@@ -31,7 +31,7 @@ const DetectedTweetList = () => {
    const [filtered, setfiltered] = useState({hate: [], nonHate: [] })
    let [pageNo, setPageNo] = useState(1)
 
-   console.log(pageNo)
+   
 
   const handleGoback = () => {
     console.log('enter')
@@ -97,10 +97,11 @@ const DetectedTweetList = () => {
         </Beta>
 
       <PaginateWrap>
-        {pageNo < 1 ? <></> : <PlainBackArrow onClick={()=>setPageNo(pageNo--)} />  }
+        {pageNo < 1 ? <></> : <PlainBackArrow style={{cursor: "pointer" }} onClick={()=>setPageNo(pageNo--)} />  }
         <p  className={pageNo === 1 ? "active" : ""} onClick={()=>setPageNo(1) }>{pageNo> 1 || pageNo < 1 ? "1" : `${pageNo}` }</p >
         <p className={pageNo===2 ? "active" : ""} onClick={()=>setPageNo(2)} >2</p>
-      <ForwardArrow className={pageNo === 2 ? 'active' : ""} onClick={()=>setPageNo(pageNo++)} /> 
+        <p>...</p>
+      <ForwardArrow style={{cursor: "pointer" }} className={pageNo === 2 ? 'active' : ""} onClick={()=>setPageNo(pageNo++)} /> 
       </PaginateWrap>    
     
       </DetectedTweetListWrap>

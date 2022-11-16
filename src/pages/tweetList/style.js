@@ -97,6 +97,7 @@ export const PaginateWrap = styled.div`
         letter-spacing: 0.02em;
         color: #596275;
         margin: 0 21px;
+        cursor: pointer;
     }
     p.active {
         width: 32px;
@@ -113,6 +114,7 @@ export const PaginateWrap = styled.div`
         line-height: 20px;
         text-align: center;
         color: #FAFAFA;
+        cursor: pointer;
 
     }
 `;
